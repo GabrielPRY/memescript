@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="">Nombre</label>
+    <input type="text" id="nombre" /> <br />
+
+    <label for="">Apellido</label>
+    <input type="text" id="apellido" /> <br />
+
+    <label for="">telefono</label>
+    <input type="text" id="tel" /> <br />
+
+    <label for="">Email</label>
+    <input type="text" id="email" /> <br />
+
+    <button id="btn">Agregar</button>
+
+    <div id="lista"></div>
+
+    <script>
+      window.onload = iniciar;
+      var personas = [];
+
+      function iniciar() {
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", agregar);
+      }
+
+      function agregar() {
+        var name = document.getElementById("nombre").value;
+        var surname = document.getElementById("apellido").value;
+        var phone = document.getElementById("tel").value;
+        var mail = document.getElementById("email").value;
+        var persona = {
+          nombre: name,
+          apellido: surname,
+          telefono: phone,
+          email: mail,
+        };
+        personas.push(persona);
+        mostrarPersonas();
+      }
+
+      function mostrarPersonas() {
+        var lista = document.getElementById("lista");
+        var html = "";
+        personas.forEach((persona) => {
+          html += `Nombre: ${persona.nombre} <br/>
+                     Apellido: ${persona.apellido} <br/>
+                     Telefóno: ${persona.telefono} <br/>
+                     Email: ${persona.email} <br/>`;
+        });
+        lista.innerHTML = html;
+      }
+    </script>
+  </body>
+</html>

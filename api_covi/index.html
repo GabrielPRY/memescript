@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>El bicho</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Estadísticas del bicho</h1>
+      <b>Fecha</b>
+      <input type="date" class="input-fecha" /> <br />
+      <b>País</b>
+      <select class="select-pais">
+        <option value="Spain">España</option>
+        <option value="Germany">Alemania</option>
+        <option value="Paraguay">Paraguay</option>
+      </select>
+      <br />
+      <button class="btn-cargar">Cargar Estadísticas</button>
+      <br />
+      <ul>
+        <li>Confirmados: <span id="today_confirmed"></span></li>
+        <li>Muertes: <span id="today_deaths"></span></li>
+        <li>En Terapía intensiva: <span id="today_intensive_care"></span></li>
+        <li>Recuperados: <span id="today_new_recovered"></span></li>
+        <li>Nuevos Confirmados: <span id="today_new_confirmed"></span></li>
+        <li>Nuevas Muertes: <span id="today_new_deaths"></span></li>
+      </ul>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

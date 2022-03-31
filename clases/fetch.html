@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <b>Nombre del Post</b> <span id="text"></span> <br />
+    <b>Completo?</b> <span id="text2"></span>
+
+    <script>
+      function loadJson() {
+        fetch("https://jsonplaceholder.typicode.com/todos/1")
+          .then((response) => response.json())
+          .then(jsonLoaded);
+      }
+
+      function jsonLoaded(json) {
+        console.log(json);
+        let txt1 = document.querySelector("#text");
+        txt1.innerText = json.title;
+        let text = document.querySelector("#text2");
+        text.innerText = json.completed ? "Completo" : "incompleto";
+      }
+      loadJson();
+    </script>
+  </body>
+</html>

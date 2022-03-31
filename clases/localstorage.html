@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalStorage</title>
+  </head>
+  <body>
+    <label for="texto">Nota</label>
+    <input type="text" id="texto" />
+    <button id="btn">Agregar</button>
+    <button id="btn-borrar">Borrar notas</button>
+
+    <div class="notas"></div>
+
+    <script>
+      window.onload = iniciar;
+
+      function iniciar() {
+        mostrarNotas();
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", () => {
+          var texto = document.getElementById("texto").value;
+
+          ///se crea una rray
+          var misNotas = [];
+
+          if (localStorage.notas) {
+            ///se llena el array del local
+            misNotas = JSON.parse(localStorage.notas);
+          }
+
+          misNotas.push(texto);
+
+          ///se transforma en texto y se lleva al local
+          localStorage.notas = JSON.stringify(misNotas);
+
+          mostrarNotas();
+        });
+
+        var btnborrar = document.getElementById("btn-borrar");
+        btnborrar.addEventListener("click", () => {
+          localStorage.clear();
+          ///refresca la páginubi
+          location.reload();
+        });
+      }
+
+      function mostrarNotas() {
+        var notas = document.querySelector(".notas");
+
+        var notes = [];
+
+        if (localStorage.notas) {
+          ///si hay notas se guardan en el array con el parse a array
+          notes = JSON.parse(localStorage.notas);
+        }
+
+        var html = "";
+
+        //se recorre el array notes y se concatena al html
+        notes.forEach((notas) => {
+          html += notas + " <br/>";
+        });
+
+        notas.innerHTML = html;
+      }
+    </script>
+  </body>
+</html>
